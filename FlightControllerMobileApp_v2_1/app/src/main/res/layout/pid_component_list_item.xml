@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:focusable="false" />
 
         <CheckBox
             android:id="@+id/componentSetZeroValue_CheckBox"
@@ -43,10 +44,10 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/component_increase_Button"
+            android:id="@+id/component_decrease_Button"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:text="+"
+            android:text="-"
             android:layout_weight="1"/>
 
         <SeekBar
@@ -58,10 +59,10 @@
             android:layout_marginRight="5dp" />
 
         <Button
-            android:id="@+id/component_decrease_Button"
+            android:id="@+id/component_increase_Button"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:text="-"
+            android:text="+"
             android:layout_weight="1"/>
 
     </LinearLayout>

@@ -72,6 +72,8 @@
 
 
 
+
+
     <ListView
         android:id="@+id/pidComponentsListView"
         android:layout_width="match_parent"
@@ -91,7 +93,7 @@
 
 
 
-    
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -105,11 +107,12 @@
             android:text="Step:"/>
 
         <EditText
-            android:id="@+id/pidStep_ExitText"
+            android:id="@+id/pidStep_EditText"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:onClick="pidStepChangedOnClick"/>
 
 
         <TextView

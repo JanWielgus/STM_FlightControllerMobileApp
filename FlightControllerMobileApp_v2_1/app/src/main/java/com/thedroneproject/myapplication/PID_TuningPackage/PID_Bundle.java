@@ -7,6 +7,8 @@ public class PID_Bundle
     private float kD;
     private int iMax;
 
+    private int ID;
+
     public PID_Bundle()
     {
         kP = 0;
@@ -34,6 +36,8 @@ public class PID_Bundle
         return iMax;
     }
 
+    public int getID() { return ID; }
+
 
     // Setters
 
@@ -60,4 +64,6 @@ public class PID_Bundle
         setkD(kD);
         setiMax(iMax);
     }
+
+    public void setID(int ID) { this.ID = ID; }
 }
