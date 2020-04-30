@@ -62,6 +62,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
             // set test on click listeners
 
             // Value edit text changed
+
             viewHolder.valueEditText.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -103,6 +104,8 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     EditText valueET = viewHolder.valueEditText;
                     float value = Float.parseFloat(viewHolder.valueEditText.getText().toString());
                     updateControllerPart(position, value);
+
+                    PID_Settings.getInstance().needToSend();
                 }
             });
 
@@ -115,6 +118,8 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     int lastProgress = viewHolder.valueSeekBar.getProgress();
                     lastProgress += PID_Settings.getInstance().getPidSpinnerStep();
                     viewHolder.valueSeekBar.setProgress(lastProgress);
+
+                    PID_Settings.getInstance().needToSend();
                 }
             });
 
@@ -126,6 +131,8 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     int lastProgress = viewHolder.valueSeekBar.getProgress();
                     lastProgress -= PID_Settings.getInstance().getPidSpinnerStep();
                     viewHolder.valueSeekBar.setProgress(lastProgress);
+
+                    PID_Settings.getInstance().needToSend();
                 }
             });
 
@@ -141,6 +148,8 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     viewHolder.decreaseButton.setEnabled(otherStuffState);
 
                     updateControllerPartFlag(position, isChecked);
+
+                    PID_Settings.getInstance().needToSend();
                 }
             });
         }

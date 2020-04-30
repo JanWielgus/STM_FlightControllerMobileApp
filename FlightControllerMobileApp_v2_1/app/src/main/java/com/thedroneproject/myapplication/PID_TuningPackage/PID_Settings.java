@@ -4,6 +4,8 @@ package com.thedroneproject.myapplication.PID_TuningPackage;
     Class with current PID setting for all controllers with feature to set values of the proper one
  */
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class PID_Settings {
     private List<PID_Bundle> controllersList;
     private PID_Bundle activeController = null;
     private int pidSpinnerStep = 10;
+    private boolean needToSend = false;
 
 
     // Receive List with controllers names and create array of PID_Bundle type
@@ -65,5 +68,24 @@ public class PID_Settings {
     public int getPidSpinnerStep()
     {
         return this.pidSpinnerStep;
+    }
+
+
+    // call this if something changed
+    public void needToSend()
+    {
+        needToSend = true;
+    }
+
+    // call after sending
+    public void sendingPerformed()
+    {
+        needToSend = false;
+    }
+
+    // in communication this indicate if there was any change in values of the active controller
+    public boolean isNeedToSendFlagChecked()
+    {
+        return needToSend;
     }
 }
