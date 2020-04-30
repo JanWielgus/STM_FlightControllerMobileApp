@@ -139,6 +139,8 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     viewHolder.valueSeekBar.setEnabled(otherStuffState);
                     viewHolder.increaseButton.setEnabled(otherStuffState);
                     viewHolder.decreaseButton.setEnabled(otherStuffState);
+
+                    updateControllerPartFlag(position, isChecked);
                 }
             });
         }
@@ -179,6 +181,19 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
             current.setkD(value);
         else if (partID == 3)
             current.setiMax((int)(value*100));
+    }
+
+    private void updateControllerPartFlag(int partID, boolean flag)
+    {
+        PID_Bundle current = PID_Settings.getInstance().getActiveController();
+        if (partID == 0)
+            current.setkP_ZeroFlag(flag);
+        else if (partID == 1)
+            current.setkI_ZeroFlag(flag);
+        else if (partID == 2)
+            current.setkD_ZeroFlag(flag);
+        else if (partID == 3)
+            current.setiMax_ZeroFlag(flag);
     }
 }
 

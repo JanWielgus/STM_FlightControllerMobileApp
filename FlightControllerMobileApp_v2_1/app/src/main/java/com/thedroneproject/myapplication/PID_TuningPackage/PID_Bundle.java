@@ -7,6 +7,11 @@ public class PID_Bundle
     private float kD;
     private int iMax;
 
+    private boolean kP_ZeroFlag = false;
+    private boolean kI_ZeroFlag = false;
+    private boolean kD_ZeroFlag = false;
+    private boolean iMax_ZeroFlag = false;
+
     private int ID;
 
     public PID_Bundle()
@@ -66,4 +71,38 @@ public class PID_Bundle
     }
 
     public void setID(int ID) { this.ID = ID; }
+
+
+
+    public boolean iskP_ZeroFlag() {
+        return kP_ZeroFlag;
+    }
+
+    public void setkP_ZeroFlag(boolean kP_ZeroFlag) {
+        this.kP_ZeroFlag = kP_ZeroFlag;
+    }
+
+    public boolean iskI_ZeroFlag() {
+        return kI_ZeroFlag;
+    }
+
+    public void setkI_ZeroFlag(boolean kI_ZeroFlag) {
+        this.kI_ZeroFlag = kI_ZeroFlag;
+    }
+
+    public boolean iskD_ZeroFlag() {
+        return kD_ZeroFlag;
+    }
+
+    public void setkD_ZeroFlag(boolean kD_ZeroFlag) {
+        this.kD_ZeroFlag = kD_ZeroFlag;
+    }
+
+    public boolean isiMax_ZeroFlag() {
+        return iMax_ZeroFlag;
+    }
+
+    public void setiMax_ZeroFlag(boolean iMax_ZeroFlag) {
+        this.iMax_ZeroFlag = iMax_ZeroFlag;
+    }
 }

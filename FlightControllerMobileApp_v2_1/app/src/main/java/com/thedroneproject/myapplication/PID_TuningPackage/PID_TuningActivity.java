@@ -85,19 +85,17 @@ public class PID_TuningActivity extends Activity
     {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
-
-            // TODO Store current value to PID_Settings, because setZero could be selected
+            //Toast.makeText(getApplicationContext(), String.valueOf(position), Toast.LENGTH_SHORT).show();
 
             PID_Settings.getInstance().setActiveController(position);
 
             // update showed values for the current controller after change
             List<PID_ComponentListAdapter.PidViewHolder> viewHolderList = pidComponentsAdapter.getViewHolderList();
             PID_Bundle active = PID_Settings.getInstance().getActiveController();
-            setViewHolder(viewHolderList.get(0), active.getkP());
-            setViewHolder(viewHolderList.get(1), active.getkI());
-            setViewHolder(viewHolderList.get(2), active.getkD());
-            setViewHolder(viewHolderList.get(3), active.getiMax());
+            setViewHolder(viewHolderList.get(0), active.getkP(), active.iskP_ZeroFlag());
+            setViewHolder(viewHolderList.get(1), active.getkI(), active.iskI_ZeroFlag());
+            setViewHolder(viewHolderList.get(2), active.getkD(), active.iskD_ZeroFlag());
+            setViewHolder(viewHolderList.get(3), active.getiMax(), active.isiMax_ZeroFlag());
         }
 
         @Override
@@ -105,10 +103,9 @@ public class PID_TuningActivity extends Activity
 
         }
 
-
-        private void setViewHolder(PID_ComponentListAdapter.PidViewHolder viewHolder, float value)
+        private void setViewHolder(PID_ComponentListAdapter.PidViewHolder viewHolder, float value, boolean zeroFlag)
         {
-            viewHolder.setZeroCheckBox.setChecked(false);
+            viewHolder.setZeroCheckBox.setChecked(zeroFlag);
             viewHolder.valueEditText.setText(String.valueOf(value));
             viewHolder.valueSeekBar.setProgress((int)(value*100.0f));
         }
