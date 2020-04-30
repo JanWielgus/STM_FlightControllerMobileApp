@@ -1,4 +1,4 @@
-package com.thedroneproject.myapplication;
+package com.thedroneproject.myapplication.PID_TuningPackage;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,10 +7,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import com.thedroneproject.myapplication.R;
 
 public class PID_TuningActivity extends Activity
 {
@@ -18,7 +21,8 @@ public class PID_TuningActivity extends Activity
     Button pidSend_button;
     CheckBox pidAutoSend_checkbox;
 
-    String[] PID_controllersList = new String[] {"Leveling", "Heading", "AltHold"};
+    String[] PID_controllersList = {"Leveling", "Heading", "AltHold"};
+    String[] PID_controllerComponents = {"P", "I", "D", "Imax"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -35,6 +39,15 @@ public class PID_TuningActivity extends Activity
         pidControllers_spinner.setOnItemSelectedListener(new PID_ControllerSpinnerActions());
         ArrayAdapter pidControllersSpinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, PID_controllersList);
         pidControllers_spinner.setAdapter(pidControllersSpinnerAdapter);
+
+
+        // Set-up the list view
+        //ListAdapter listAdapter = new //...
+        // set adapter to the list view: find it by id and then use list.setAdapter...
+        // set onItemClickListener on the list view
+        ListView listView = findViewById(R.id.pidComponentsListView);
+        listView.setAdapter(new PID_ComponentListAdapter(this, R.layout.pid_component_list_item, PID_controllerComponents));
+
     }
 
 
