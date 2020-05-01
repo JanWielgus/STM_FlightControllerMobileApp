@@ -56,13 +56,17 @@ public class PID_TuningActivity extends Activity
 
         // Setup the PID_Settings class
         PID_Settings.getInstance().createControllersFromNames(PID_controllersList);
+
+        // initialize communication with pilot
+        pilotCommunication.setActivity(this);
+        pilotCommunication.initializeCommunication();
     }
 
 
     public void pidSendButtonOnClick(View view)
     {
         // send on request (send button pressed)
-        pilotCommunication.send();
+        pilotCommunication.requestOneTimeSending();
     }
 
 
