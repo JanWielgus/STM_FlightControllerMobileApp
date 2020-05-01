@@ -13,7 +13,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -109,7 +108,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     float value = Float.parseFloat(viewHolder.valueEditText.getText().toString());
                     updateControllerPart(position, value); // update values in the PID_Settings
 
-                    PID_Settings.getInstance().needToSend();
+                    PID_Settings.getInstance().setNeedToSend();
                 }
             });
 
@@ -123,7 +122,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     lastProgress += PID_Settings.getInstance().getPidSpinnerStep();
                     viewHolder.valueSeekBar.setProgress(lastProgress);
 
-                    PID_Settings.getInstance().needToSend();
+                    PID_Settings.getInstance().setNeedToSend();
                 }
             });
 
@@ -136,7 +135,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     lastProgress -= PID_Settings.getInstance().getPidSpinnerStep();
                     viewHolder.valueSeekBar.setProgress(lastProgress);
 
-                    PID_Settings.getInstance().needToSend();
+                    PID_Settings.getInstance().setNeedToSend();
                 }
             });
 
@@ -153,7 +152,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
 
                     updateControllerPartFlag(position, isChecked);
 
-                    PID_Settings.getInstance().needToSend();
+                    PID_Settings.getInstance().setNeedToSend();
                 }
             });
         }

@@ -10,7 +10,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -28,6 +27,9 @@ public class PID_TuningActivity extends Activity
     String[] PID_controllersList = {"Leveling", "Heading", "AltHold"};
     String[] PID_controllerComponents = {"P", "I", "D", "Imax"};
     PID_ComponentListAdapter pidComponentsAdapter;
+
+    PilotCommunication pilotCommunication = PilotCommunication.getInstance();
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -59,19 +61,16 @@ public class PID_TuningActivity extends Activity
 
     public void pidSendButtonOnClick(View view)
     {
-
+        // send on request (send button pressed)
+        pilotCommunication.send();
     }
 
 
     public void autoSendingCheckboxOnClick(View view)
     {
-        if (pidAutoSend_checkbox.isChecked())
-            pidSend_button.setEnabled(false);
-        else
-            pidSend_button.setEnabled(true);
-
-        // other actions
-        // ...
+        boolean checkboxState = pidAutoSend_checkbox.isChecked();
+        pidSend_button.setEnabled(!checkboxState); // disable button when checked
+        pilotCommunication.setAutoSending(checkboxState); // enable auto sending when checked
     }
 
     public void pidStepChangedOnClick(View view)

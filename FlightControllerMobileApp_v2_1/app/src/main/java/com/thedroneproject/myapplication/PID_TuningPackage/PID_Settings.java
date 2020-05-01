@@ -72,7 +72,7 @@ public class PID_Settings {
 
 
     // call this if something changed
-    public void needToSend()
+    public void setNeedToSend()
     {
         needToSend = true;
     }
