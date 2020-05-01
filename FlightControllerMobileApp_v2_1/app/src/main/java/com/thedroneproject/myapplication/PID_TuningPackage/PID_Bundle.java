@@ -26,19 +26,19 @@ public class PID_Bundle
     // Getters
 
     public float getkP() {
-        return kP;
+        return kP_ZeroFlag ? 0 : kP;
     }
 
     public float getkI() {
-        return kI;
+        return kI_ZeroFlag ? 0 : kI;
     }
 
     public float getkD() {
-        return kD;
+        return kD_ZeroFlag ? 0 : kD;
     }
 
     public int getiMax() {
-        return iMax;
+        return iMax_ZeroFlag ? 0 : iMax;
     }
 
     public int getID() { return ID; }
