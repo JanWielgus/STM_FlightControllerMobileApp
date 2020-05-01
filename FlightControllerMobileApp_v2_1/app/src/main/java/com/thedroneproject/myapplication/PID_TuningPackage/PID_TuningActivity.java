@@ -95,7 +95,7 @@ public class PID_TuningActivity extends Activity
             setViewHolder(viewHolderList.get(0), active.getkP(), active.iskP_ZeroFlag());
             setViewHolder(viewHolderList.get(1), active.getkI(), active.iskI_ZeroFlag());
             setViewHolder(viewHolderList.get(2), active.getkD(), active.iskD_ZeroFlag());
-            setViewHolder(viewHolderList.get(3), active.getiMax(), active.isiMax_ZeroFlag());
+            setViewHolder(viewHolderList.get(3), active.getiMax()/100.f, active.isiMax_ZeroFlag());
         }
 
         @Override

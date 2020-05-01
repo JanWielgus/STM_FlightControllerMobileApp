@@ -55,7 +55,11 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
             convertView.setTag(viewHolder);
             viewHolderList.add(viewHolder);
 
+            // set the proper controller name
             viewHolder.nameTextView.setText(getItem(position));
+
+            // set the range of seekBar
+            viewHolder.valueSeekBar.setMax(300);
 
 
 
@@ -79,7 +83,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                     // update values in the current PID bundle
                     EditText valueET = viewHolder.valueEditText;
                     float value = Float.parseFloat(viewHolder.valueEditText.getText().toString());
-                    updateControllerPart(position, value);
+                    updateControllerPart(position, value); // update values in the PID_Settings
 
                     // update seek bar
                     //viewHolder.valueSeekBar.setProgress((int)(value*100.f));
@@ -103,7 +107,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
                 public void onStopTrackingTouch(SeekBar seekBar) {
                     EditText valueET = viewHolder.valueEditText;
                     float value = Float.parseFloat(viewHolder.valueEditText.getText().toString());
-                    updateControllerPart(position, value);
+                    updateControllerPart(position, value); // update values in the PID_Settings
 
                     PID_Settings.getInstance().needToSend();
                 }
@@ -154,7 +158,7 @@ public class PID_ComponentListAdapter extends ArrayAdapter<String>
             });
         }
 
-        // there to get viewHolder use
+        // to use viewHolder there:
         //ViewHolder viewHolder = (ViewHolder)convertView.getTag();
 
         return convertView;
