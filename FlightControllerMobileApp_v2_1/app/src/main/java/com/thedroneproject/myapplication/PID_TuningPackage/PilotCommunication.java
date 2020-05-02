@@ -123,15 +123,15 @@ public class PilotCommunication
             for (int i=0; i<4; i++)
                 dataToSend[i+2] = temp[i];
             // I
-            temp = intToByteArray((int)(currentPID.getkP() * 100.f));
+            temp = intToByteArray((int)(currentPID.getkI() * 100.f));
             for (int i=0; i<4; i++)
                 dataToSend[i+6] = temp[i];
             // D
-            temp = intToByteArray((int)(currentPID.getkP() * 100.f));
+            temp = intToByteArray((int)(currentPID.getkD() * 100.f));
             for (int i=0; i<4; i++)
                 dataToSend[i+10] = temp[i];
             // iMax
-            temp = intToByteArray((int)currentPID.getkP());
+            temp = intToByteArray((int)currentPID.getiMax());
             for (int i=0; i<4; i++)
                 dataToSend[i+14] = temp[i];
 
