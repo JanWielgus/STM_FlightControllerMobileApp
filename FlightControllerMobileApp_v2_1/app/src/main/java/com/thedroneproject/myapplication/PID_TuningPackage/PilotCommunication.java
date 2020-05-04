@@ -214,7 +214,8 @@ public class PilotCommunication
 
 
             try {
-                ipAddr = InetAddress.getByAddress(new byte[]{(byte)192, (byte)168, 1, 24});
+                //ipAddr = InetAddress.getByAddress(new byte[]{(byte)192, (byte)168, 1, 24});
+                ipAddr = InetAddress.getByAddress(new byte[]{(byte)192, (byte)168, (byte)43, (byte)183});
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }

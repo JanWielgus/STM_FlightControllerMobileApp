@@ -20,7 +20,7 @@ public class PID_Settings {
     // remaining content
     private List<PID_Bundle> controllersList;
     private PID_Bundle activeController = null;
-    private int pidSpinnerStep = 10;
+    private int pidSpinnerStep = 5;
     private boolean needToSend = false;
 
 
