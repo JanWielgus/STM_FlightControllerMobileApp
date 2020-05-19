@@ -114,7 +114,7 @@ public class PilotCommunication
 
         private int packPID_dp()
         {
-            dataToSend[0] = 0; // packet ID
+            dataToSend[0] = 100; // packet ID
             PID_Bundle currentPID = pidSettingsInstance.getActiveController();
             dataToSend[1] = (byte)currentPID.getID(); // controller ID
 
