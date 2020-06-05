@@ -260,12 +260,12 @@ public class PilotCommunication
     // other methods
     private byte[] intToByteArray(int value) {
         return new byte[] {
-                (byte)(value >> 24), (byte)(value >> 16), (byte)(value >> 8), (byte)(value) };
+                (byte)(value), (byte)(value >> 8), (byte)(value >> 16), (byte)(value >> 24) };
     }
 
 
     private int byteArrayToInt(byte[] arr) {
-        int result = arr[0] << 24 | (arr[1] & 0xFF) << 16 | (arr[2] & 0xFF) << 8 | (arr[3] & 0xFF);
+        int result = arr[3] << 24 | (arr[2] & 0xFF) << 16 | (arr[1] & 0xFF) << 8 | (arr[0] & 0xFF);
         return result;
     }
 }
